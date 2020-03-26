@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout Practice</title>
+</head>
+<body>
+    <main>
+        <form method="POST" action="https://request-inspector.glitch.me/">
+            <h3>Card Information</h3>
+            <div>
+                <label for="crd-number">Credit Card Number:</label>
+                <input id="crd-number" name="crd-number" type="number" placeholder="1234-5678-9123-4567" required>
+            </div>
+            <div>
+                <label for="security">Security Code:</label>
+                <input id="security" name="security" type="password" required>
+            </div>
+            <div>
+                <label for="month">Expiration Month/Year:</label>
+                <input id="month" name="month" type="number" placeholder="00" required>
+                <span>/</span>
+                <input id="year" name="year" type="number" placeholder="0000" required>
+            </div>
+            <h3>Shipping Information</h3>
+            <div>
+                <label for="country">Country:</label>
+                <select id="country" name="country">
+                    <option value="United States">United States</option>
+                    <option value="Canada">Canada</option>
+                    <option value="Russia">Russia</option>
+                    <option value="Japan">Japan</option>
+                </select>
+            </div>
+            <div>
+                <label for="address">Address:</label>
+                <input id="address" name="address" type="text" placeholder="Address" required>
+            </div>
+            <div>
+                <label for="city">City:</label>
+                <input id="city" name="city" type="text" placeholder="City" required>
+            </div>
+            <div>
+                <label for="state">State:</label>
+                <input id="state" name="state" type="text" placeholder="State" required>
+            </div>
+            <div>
+                <label for="zipcode">Zip Code:</label>
+                <input id="zipcode" name="zipcode" type="number" placeholder="12345" required>
+            </div>
+            <br>
+            <div>
+                <label for="save-info">Keep this credit card on file for future transactions</label>
+                <input id="save-info" name="save-info" type="checkbox" value="yes">
+            </div>
+            <br>
+            <button type="submit">Buy Now!</button>
+        </form>
+    </main>
+</body>
+</html>

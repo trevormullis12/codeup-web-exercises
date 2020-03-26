@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Property Practice</title>
+</head>
+<body>
+    <main>
+        <form method="POST" action="https://request-inspector.glitch.me/">
+            <div>
+                <select name="property-type">
+                    <option value="beach">Beachfront</option>
+                    <option value="neighborhood">Neighborhood</option>
+                    <option value="gated">Gated Community</option>
+                </select>
+            </div>
+            <div>
+                <label for="sqfeet">Square Footage</label>
+                <input id="sqfeet" name="sqfeet" type="number" placeholder="Square Footage" required>
+            </div>
+            <div>
+                <label for="minprice">Minimum Price</label>
+                <input id="minprice" name="minprice" type="number" placeholder="Min Price" required>
+            </div>
+            <div>
+                <label for="maxprice">Maximum Price</label>
+                <input id="maxprice" name="maxprice" type="number" placeholder="Max Price" required>
+            </div>
+            <div>
+                <label for="zipcode">Zip Code</label>
+                <input id="zipcode" name="zipcode" type="number" placeholder="Zip Code" required>
+            </div>
+            <div>
+                <label for="bedroom">Number of Bedrooms</label>
+                <input id="bedroom" name="bedroom" type="number" placeholder="Number of Bedrooms" required>
+            </div>
+            <div>
+                <label for="zipcode">Number of Bathrooms</label>
+                <input id="zipcode" name="zipcode" type="number" placeholder="Number of Bathrooms" required>
+            </div>
+            <button type="submit">Search now</button>
+        </form>
+    </main>
+</body>
+</html>
