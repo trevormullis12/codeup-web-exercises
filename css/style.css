@@ -1,4 +1,36 @@
-.fancy-header {
-    color: purple; /* single line comment */
+body {
+    background-color: black;
+    background-image: url("http://www.valleyhealthcolumbus.com/wp-content/uploads/2015/08/blue-gradient-background.png");
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    font-family: "PT Sans", sans-serif;
+    font-size: 1.1em;
+}
+header {
+    text-align: center;
+}
+main{
+    text-align: left;
+}
+h1, h2 {
+    color: aqua; /* single line comment */
     text-decoration: underline;
 }
+ul {
+    list-style: square;
+}
+table{
+    width: 50%;
+}
+
+th {
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid aquamarine;
+    font-size: 1.1em;
+}
+a{color: aqua;}
+a:hover{color: aquamarine;}
