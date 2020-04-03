@@ -1,0 +1,64 @@
+:root {
+    --logo-size: 3em;
+}
+
+* {box-sizing: border-box}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", "Work Sans", sans-serif;
+}
+
+nav {
+    padding: 0;
+    margin: 0;
+    background-color: #C1C1C1;
+    display: flex;
+    align-items: center;
+    font-family: "Work Sans";
+    font-weight: bolder;
+}
+
+ul {
+    padding: .6em 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    height: 77.19px;
+    align-items: center;
+
+}
+
+a {
+    color: black;
+    display: inline-block;
+    text-decoration: none;
+    padding: 1em 0;
+}
+
+a :hover, span :hover{
+    color: blue;
+}
+
+.nav-link {
+    padding: 1em;
+}
+
+section {
+    display: flex;
+}
+
+nav .right-nav {
+    margin-left: auto;
+}
+
+.logo {
+    padding: .2em 0;
+    margin: 0;
+    /*left: calc(50% - (var(--logo-size) / 2));*/
+    left: calc(50% - 60.51px);
+    font-size: 3em;
+    font-family: Montserrat;
+    position: absolute;
+}

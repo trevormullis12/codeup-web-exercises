@@ -11,9 +11,9 @@
 
     // Write a JavaScript function that takes in a string input and returns true if the input is at least 8 characters in length. It should return false for all other string inputs
 
-    function isAtLeastEightLong(word) {
-        return word.length >= 8;
-    }
+    // function isAtLeastEightLong(word) {
+    //     return word.length >= 8;
+    // }
 
     /*
     Write a function, twoMoreAwayFromZero that takes in a number input and returns a number two more away from zero than the original input. Negative number inputs will be reduced by two and positive numbers and zero will be increased by two.
@@ -24,26 +24,31 @@
     twoMoreAwayFromZero(-2) will return -4
     twoMoreAwayFromZero(-3.5) will return -5.5*/
 
-    function twoMoreAwayFromZero(num) {
-        if(num != 0)
-            return num + ((num / Math.abs(num)) * 2);
-        else
-            return num + 2;
-    }
+    // function twoMoreAwayFromZero(num) {
+    //     if(num != 0)
+    //         return num + ((num / Math.abs(num)) * 2);
+    //     else
+    //         return num + 2;
+    // }
 
     // Write a function that returns the quotient of two numbers (Assume the arguments will be numbers)
 
-    function quotientOfTwo(numOne, numTwo){
-        return numOne / numTwo;
-    }
+    // function quotientOfTwo(numOne, numTwo){
+    //     return numOne / numTwo;
+    // }
 
-    console.log('isAtLeastEightLong("cat")');
-    console.log(isAtLeastEightLong("justinreich"));
-    console.log(twoMoreAwayFromZero(2), 4);
-    console.log(twoMoreAwayFromZero(0), 2);
-    console.log(twoMoreAwayFromZero(0.5), 2.5);
-    console.log(twoMoreAwayFromZero(-3), -6);
-    console.log(quotientOfTwo(25, 25), 5);
+    // Write a JavaScript function that returns the number 7
+
+    function seven() { return 7; }
+
+    // console.log('isAtLeastEightLong("cat")');
+    // console.log(isAtLeastEightLong("justinreich"));
+    // console.log(twoMoreAwayFromZero(2), 4);
+    // console.log(twoMoreAwayFromZero(0), 2);
+    // console.log(twoMoreAwayFromZero(0.5), 2.5);
+    // console.log(twoMoreAwayFromZero(-3), -6);
+    // console.log(quotientOfTwo(25, 25), 5);
+    console.log(seven());
 
 </scrpit>
 </body>
