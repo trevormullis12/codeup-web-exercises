@@ -56,9 +56,9 @@ nav .right-nav {
 .logo {
     padding: .2em 0;
     margin: 0;
-    /*left: calc(50% - (var(--logo-size) / 2));*/
-    left: calc(50% - 60.51px);
-    font-size: 3em;
+    left: calc(50% - (var(--logo-size) / 2));
+    /*left: calc(50% - 60.51px);*/
+    font-size: var(--logo-size);
     font-family: Montserrat;
     position: absolute;
 }
