@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid Layout 1</title>
+    <style>
+        * {box-sizing:border-box}
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .wrapper {
+            height: 80vh;
+            width: 80vw;
+            display: grid;
+            grid-template-columns: 21% 61% 18%;
+            grid-template-rows: 10% auto 10%;
+        }
+        .box {
+            padding: 1em;
+            background-color: #FAD749;
+            border: 4px white solid;
+        }
+
+        header {grid-area: 1 / 1 / 2 / -1}
+        nav {grid-area: 2 / 1 / -1 / 2}
+        main {grid-area: 2 / 2 / -2 / -2}
+        .advert {grid-area: 2 / 3 / -1 / -2}
+        footer {grid-area: 3 / 2 / -1 / -1 }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="box">
+            <span>Header</span>
+        </header>
+        <nav class="box">
+            <span>Nav</span>
+        </nav>
+        <main class="box">
+            <span>Article</span>
+        </main>
+        <section class="advert box">
+            <span>Ads</span>
+        </section>
+        <footer class="box">
+            <span>Footer</span>
+        </footer>
+    </div>
+</body>
+</html>
