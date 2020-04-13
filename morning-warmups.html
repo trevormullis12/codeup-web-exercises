@@ -61,8 +61,17 @@
 
     // Write a javascript function that returns true or false as to whether or not a number passed into the function is a whole number.
 
-    function isWholeNumber(num) {
-        return (num - Math.floor(num) === 0);
+    // function isWholeNumber(num) {
+    //     return (num - Math.floor(num) === 0);
+    // }
+
+    // Write a JavaScript function that takes in two numbers, and returns the larger value. Assume all inputs are numbers.
+
+    function largerNumber(num1, num2) {
+        if(num1 > num2)
+            return num1;
+        else
+            return num2;
     }
 
     // console.log('isAtLeastEightLong("cat")');
@@ -72,13 +81,15 @@
     // console.log(twoMoreAwayFromZero(0.5), 2.5);
     // console.log(twoMoreAwayFromZero(-3), -5);
     // console.log(quotientOfTwo(25, 25), 5);
-    //console.log(seven());
-    //console.log(isEvenNum(2), true);
-    //console.log(isEvenNum(25), false);
+    // console.log(seven());
+    // console.log(isEvenNum(2), true);
+    // console.log(isEvenNum(25), false);
     // console.log(returnEvenOddMessage(2));
     // console.log(returnEvenOddMessage(17))
-    console.log(isWholeNumber(47));
-    console.log(isWholeNumber(34.55));
+    // console.log(isWholeNumber(47));
+    // console.log(isWholeNumber(34.55));
+    console.log(largerNumber(1 , 2));
+    console.log(largerNumber(5, 2));
 
 
 
