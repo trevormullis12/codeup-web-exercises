@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Morning Warmups</title>
 </head>
 <body>
 
@@ -67,13 +67,23 @@
 
     // Write a JavaScript function that takes in two numbers, and returns the larger value. Assume all inputs are numbers.
 
-    function largerNumber(num1, num2) {
-        if(num1 > num2)
-            return num1;
-        else
-            return num2;
-    }
+    // function largerNumber(num1, num2) {
+    //     if(num1 > num2)
+    //         return num1;
+    //     else
+    //         return num2;
+    // }
 
+    function fizzBuzz() {
+        for(var i = 0; i <= 100; i++) {
+            var ans = "";
+            if (i % 3 === 0)
+                ans += "Fizz";
+            if (i % 5 === 0)
+                ans += "Buzz";
+            console.log(i + " " + ans);
+        }
+    }
     // console.log('isAtLeastEightLong("cat")');
     // console.log(isAtLeastEightLong("justinreich"));
     // console.log(twoMoreAwayFromZero(2), 4);
@@ -88,8 +98,9 @@
     // console.log(returnEvenOddMessage(17))
     // console.log(isWholeNumber(47));
     // console.log(isWholeNumber(34.55));
-    console.log(largerNumber(1 , 2));
-    console.log(largerNumber(5, 2));
+    // console.log(largerNumber(1 , 2));
+    // console.log(largerNumber(5, 2));
+    fizzBuzz();
 
 
 
