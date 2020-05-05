@@ -74,15 +74,23 @@
     //         return num2;
     // }
 
-    function fizzBuzz() {
-        for(var i = 0; i <= 100; i++) {
-            var ans = "";
-            if (i % 3 === 0)
-                ans += "Fizz";
-            if (i % 5 === 0)
-                ans += "Buzz";
-            console.log(i + " " + ans);
+    // function fizzBuzz() {
+    //     for(var i = 0; i <= 100; i++) {
+    //         var ans = "";
+    //         if (i % 3 === 0)
+    //             ans += "Fizz";
+    //         if (i % 5 === 0)
+    //             ans += "Buzz";
+    //         console.log(i + " " + ans);
+    //     }
+    // }
+
+    function containsArrayLength(v) {
+        for(var i = 0; i < v.length; i++) {
+            if(v[i] == v.length)
+                return true;
         }
+        return false;
     }
     // console.log('isAtLeastEightLong("cat")');
     // console.log(isAtLeastEightLong("justinreich"));
@@ -100,8 +108,11 @@
     // console.log(isWholeNumber(34.55));
     // console.log(largerNumber(1 , 2));
     // console.log(largerNumber(5, 2));
-    fizzBuzz();
-
+    // fizzBuzz();
+    console.log(containsArrayLength([1]));
+    console.log(containsArrayLength(['bob', 3, false]));
+    console.log(containsArrayLength([{'a': 'hello'}, 10, true]));
+    console.log(containsArrayLength([5, {'a': 'hello'}, 30, true, null]));
 
 
 </script>
