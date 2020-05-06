@@ -2,35 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mapbox Practice</title>
+    <title>Mapbox 2</title>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css' rel='stylesheet' />
-
 </head>
 <body>
-
 <script src="js/keys.js"></script>
-<div id='map' style='width: 100vw; height: 300px;'></div>
+<div id='map' style='width: 100vw; height: 400px;'></div>
 <script>
     mapboxgl.accessToken = mapboxKey;
     var map = new mapboxgl.Map({
         container: 'map',
         zoom: 10,
-        center: [-98.4916, 29.42532],
+        center: [-77.03637, 38.89511],
         style: 'mapbox://styles/mapbox/streets-v9'
     });
 
     var marker = new mapboxgl.Marker();
-    // console.log(marker);
-    // console.log(marker.setLngLat(lng: -98.4916, lat: 29.42532])
+    // marker.setDraggable(true);
     marker
-        .setLngLat({lng: -98.4916, lat: 29.42532})
+        .setLngLat({lng: -77.050636, lat: 38.889248})
         .addTo(map);
 
     var popup = new mapboxgl.Popup();
-    popup.setHTML("<h1>San Antonio</h1>")
-    marker.setPopup(popup);
-</script>
+    // var lngLat = marker.getLngLat();
+    popup.setHTML("<h1>Lincoln Memorial</h1>");
 
+    // var coords = document.getElementById("coords");
+    //
+    // marker.on('dragend', function() {
+    //     coords.innerHTML = marker.getLngLat();
+    //     // console.log(document.getElementsByClassName("coords").innerHTML = "nottitle";
+    // })
+
+    marker.setPopup(popup);
+
+</script>
 </body>
 </html>
