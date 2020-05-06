@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mapbox Practice</title>
+    <title>Mapbox 3</title>
     <script src="js/mapbox-geocode-utils.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css' rel='stylesheet' />
@@ -20,25 +20,14 @@
         style: 'mapbox://styles/mapbox/streets-v9'
     });
 
-    // var marker = new mapboxgl.Marker();
-    // // console.log(marker);
-    // // console.log(marker.setLngLat(lng: -98.4916, lat: 29.42532])
-    // marker
-    //     .setLngLat({lng: -98.4916, lat: 29.42532})
-    //     .addTo(map);
-    //
-    // var popup = new mapboxgl.Popup();
-    // popup.setHTML("<h1>San Antonio</h1>")
-    // marker.setPopup(popup);
-
-
-    geocode("600 Navarro St #350, San Antonio, TX 78205", mapboxKey).then(function(result) {
+    geocode("Whitefish, Montana", mapboxKey).then(function(result) {
         console.log(result);
         map.setCenter(result);
-        map.setZoom(20);
     })
 
+    reverseGeocode({lat: 21.2620, lng:-157.8060}, mapboxKey).then(function(result) {
+        console.log(result);
+    })
 </script>
-
 </body>
 </html>
