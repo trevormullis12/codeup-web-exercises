@@ -85,13 +85,23 @@
     //     }
     // }
 
-    function containsArrayLength(v) {
-        for(var i = 0; i < v.length; i++) {
-            if(v[i] == v.length)
-                return true;
-        }
-        return false;
+    // function containsArrayLength(v) {
+    //     for(var i = 0; i < v.length; i++) {
+    //         if(v[i] == v.length)
+    //             return true;
+    //     }
+    //     return false;
+    // }
+
+    // Write a javascript function that takes in a number and returns the number raised to the power of four.
+    // If any argument is passed into the function that is not a number, return false.
+    function powerOfFour(v) {
+        if(isNaN(parseFloat(v)))
+            return false;
+        else
+            return parseFloat(v) ** 4;
     }
+
     // console.log('isAtLeastEightLong("cat")');
     // console.log(isAtLeastEightLong("justinreich"));
     // console.log(twoMoreAwayFromZero(2), 4);
@@ -109,10 +119,13 @@
     // console.log(largerNumber(1 , 2));
     // console.log(largerNumber(5, 2));
     // fizzBuzz();
-    console.log(containsArrayLength([1]));
-    console.log(containsArrayLength(['bob', 3, false]));
-    console.log(containsArrayLength([{'a': 'hello'}, 10, true]));
-    console.log(containsArrayLength([5, {'a': 'hello'}, 30, true, null]));
+    // console.log(containsArrayLength([1]));
+    // console.log(containsArrayLength(['bob', 3, false]));
+    // console.log(containsArrayLength([{'a': 'hello'}, 10, true]));
+    // console.log(containsArrayLength([5, {'a': 'hello'}, 30, true, null]));
+    console.log(powerOfFour(2));
+    console.log(powerOfFour(5));
+    console.log(powerOfFour("7"));
 
 
 </script>
