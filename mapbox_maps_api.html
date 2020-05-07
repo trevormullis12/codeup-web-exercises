@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mapbox Map Exercise</title>
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css' rel='stylesheet' />
+
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+        #map {
+            width: 1100px;
+            height: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div id='map'></div>
+<script src="js/keys.js"></script>
+<script src="js/mapbox-geocode-utils.js"></script>
+<script>
+
+    var restaurants = [
+        {
+            name: "Ito Ramen",
+            address: "14395 Blanco Rd, San Antonio, TX 78216",
+            message: "Best Ramen!"
+        },
+        {
+            name: "Marco's Pizza",
+            address: "10919 Culebra Rd #158, San Antonio, TX 78253",
+            message: "Amazing Pizza!"
+        },
+        {
+            name: "Taco Bell",
+            address: "12360 Leslie Rd, Helotes, TX 78023",
+            message: "Fav Fast Food!"
+        }
+    ];
+
+    mapboxgl.accessToken = mapboxKey;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: [-98.4996, 29.6052],
+        zoom: 14
+    });
+
+    // restaurants.forEach(function(restaurant) {
+    //     var  = new mapboxgl.Marker();
+    //     geocode(restaurants.restaurant.address, mapboxKey).then(function (result) {
+    //         console.log(result);
+    //         map.setCenter(result);
+    //         marker
+    //             .setLngLat(result);
+    //             .addTo(map);
+    //     })
+    //
+    //     var popup = new mapboxgl.Popup();
+    //     popup.setHTML("<h1>" + restaurant.name +"</h1>")
+    //     marker.setPopup(popup);
+    // });
+
+    restaurants.forEach(function(restaurant) {
+        geocode(restaurant.address, mapboxKey).then(function(coords) {
+
+            var popup = new mapboxgl.Popup()
+                .setHTML('<h3>' + restaurant.name + '</h3>' + '<p>' + restaurant.message + '</p>');
+
+            var marker = new mapboxgl.Marker()
+                .setLngLat(coords)
+                .addTo(map)
+                .setPopup(popup);
+
+        });
+    });
+
+</script>
+</body>
+</html>
