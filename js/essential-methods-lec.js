@@ -36,8 +36,8 @@ $(document).ready(function() {
     });
 
     // TODO TOGETHER: store the inner text of #main-heading in a variable
-    var innerText = $('#main-heading').html();
-    // alert(innerText);
+    // var innerText = $('#main-heading').html();
+    // // alert(innerText);
 
     // TODO: Using a css method, change the banner background-color to black
     //  Hint: make sure you use the right selector
@@ -66,17 +66,49 @@ $(document).ready(function() {
      * 			       Traversing
      *********************************************/
 
+    $('#gryffindor').children();
+
+    console.log($('#josh').next());
+
     // TODO TOGETHER: console log each list element's text
+
+    var numbers = [1,2,3,4,5];
+    numbers.forEach(function(number){
+        console.log(number);
+    });
+
+    console.log($('li'));
+
+    $('li').each(function() {
+        console.log($(this).html());
+    })
 
     // TODO TOGETHER: select all list elements and console log the first match
 
+    console.log($('li').first().html());
+
     // TODO TOGETHER: select all list elements and console log the last match
+
+    console.log($('li').last().html());
 
     // TODO TOGETHER: When I click on a list element, highlight its parent
 
+    $('li').click(function(){
+        $(this).parent().css('background-color', 'yellow');
+    })
+
     // TODO TOGETHER: When I click into a <ul>, console log last child in that group
 
-    // TODO TOGETHER: When I click on any list element, console log the next element
+    $('ul').click(function() {
+        console.log($(this).children().last().html());
+    })
+
+    // TODO TOGETHER: When I click on Ravenclaw heading, change bg color to blue
+
+    $('#r-heading').click(function() {
+        $(this).next().css('background-color', 'blue');
+        // $(this).next().addClass('ravenclaw');
+    })
 
 
 
