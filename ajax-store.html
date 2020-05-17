@@ -2,12 +2,57 @@
 <html>
 <head>
     <title>Online Store</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Montserrat", "Work Sans", sans-serif;
+        }
+
+        .container {
+            display: inline-grid;
+            grid-template-columns: auto 70% auto;
+            grid-template-rows: auto auto auto;
+            width: 100%;
+        }
+
+        .items {
+            border-left: 2px solid black;
+        }
+
+        #tool-title {
+            text-align: center;
+            grid-area: 1 / 2 / 2 / 3;
+        }
+
+        #products, td{
+            border-collapse: collapse;
+            border: 2px solid black;
+            grid-area: 2 / 2 / 3 / 3;
+        }
+
+        #refresh {
+            grid-area: 3 / 2 / 4 / 3;
+            width: 200px;
+            margin: 10px auto auto auto;
+            background-color: darkorange;
+            color: white;
+            padding: 10px 0;
+            border-radius: 4px;
+            border: 0;
+            transition-duration: 0.4s;
+            font-size: .8em;
+        }
+
+    </style>
 </head>
 <body>
 
-<h1>My Tool Store</h1>
-
 <div class="container">
+    <h1 id="tool-title"><i class="fas fa-tools"></i> Tools R Us <i class="fas fa-toolbox"></i></h1>
+
     <table id="products">
         <thead>
             <tr>
@@ -19,9 +64,12 @@
         </thead>
         <tbody id="insertProducts"></tbody>
     </table>
+
+    <button type="button" id="refresh">Refresh</button>
 </div>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/48d2a09667.js" crossorigin="anonymous"></script>
 
 <script>
 (function() {
@@ -37,46 +85,30 @@
 
         for(var i = 0; i < data.length; i++) {
         var tool = data[i];
+        var highlightColor = 'white';
+
+        if((i % 2) + 1 == true)
+            highlightColor = 'lightgrey';
+        else
+            highlightColor = 'white';
 
         var html =  '<tr>'
-            html += '<th>' + tool.title + '</th>';
-            html += '<th>' + tool.quantity + '</th>';
-            html += '<th> $' + tool.price + '</th>';
-            html += '<th>' + tool.categories.join(", ") + '</th>';
+            html += '<th class="items" style=" background-color:' + highlightColor + '">' + tool.title + '</th>';
+            html += '<th class="items" style=" background-color:' + highlightColor + '">' + tool.quantity + '</th>';
+            html += '<th class="items" style=" background-color:' + highlightColor + '"> $' + tool.price + '</th>';
+            html += '<th class="items" style=" background-color:' + highlightColor + '">' + tool.categories.join(", ") + '</th>';
             html += '</tr>';
 
             $('#insertProducts').append(html);
         }
     });
+
+    $('#refresh').click(function() {
+        location.reload();
+    });
+
 })();
 </script>
-
-<style>
-    * {
-        box-sizing: border-box;
-    }
-
-    .container {
-        display: inline-grid;
-        grid-template-columns: auto 70% auto;
-        grid-template-rows: auto auto;
-        width: 100%;
-    }
-
-    h1 {
-        text-align: center;
-    }
-
-    #products {
-        border: 2px solid black;
-        grid-area: 2 / 2 / 3 / 3;
-    }
-
-    tr {
-        border: 2px solid black;
-    }
-
-</style>
 
 </body>
 </html>
