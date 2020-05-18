@@ -12,7 +12,7 @@
 <script src="js/keys.js"></script>
 <div id='map' style='width: 100vw; height: 300px;'></div>
 <script>
-    mapboxgl.accessToken = mapboxKey;
+    mapboxgl.accessToken = MAPBOX_KEY;
     var map = new mapboxgl.Map({
         container: 'map',
         zoom: 10,
@@ -20,12 +20,12 @@
         style: 'mapbox://styles/mapbox/streets-v9'
     });
 
-    geocode("Whitefish, Montana", mapboxKey).then(function(result) {
+    geocode("Whitefish, Montana", MAPBOX_KEY).then(function(result) {
         console.log(result);
         map.setCenter(result);
     })
 
-    reverseGeocode({lat: 21.2620, lng:-157.8060}, mapboxKey).then(function(result) {
+    reverseGeocode({lat: 21.2620, lng:-157.8060}, MAPBOX_KEY).then(function(result) {
         console.log(result);
     })
 </script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather API</title>
+</head>
+<body>
+
+
+<!--jquery keys-->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+        crossorigin="anonymous"></script>
+
+<script src="js/keys.js"></script>
+
+<!--mapbox keys-->
+<script>
+        "use strict";
+
+        var weatherUrl = 'https://api.openweathermap.org/data/2.5/onecall';
+        var weatherOptions = {
+            lat: 29.4241,
+            lon: -98.4936,
+            appid: OPEN_WEATHER_APPID,
+            exclude: 'minutely, current, hourly',
+            units: 'imperial',
+            timezone: 'Chicago'
+        };
+
+        $.get(weatherUrl, weatherOptions).done(function(data) {
+            console.log(data);
+            console.log(data.daily[1].pressure);
+
+            var todayDate = new Date(data.daily[0].dt + 1000);
+            console.log(todayDate.toLocaleDateString());
+        })
+</script>
+</body>
+</html>

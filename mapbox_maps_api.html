@@ -47,7 +47,7 @@
         }
     ];
 
-    mapboxgl.accessToken = mapboxKey;
+    mapboxgl.accessToken = MAPBOX_KEY;
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/streets-v9',
@@ -71,7 +71,7 @@
     // });
 
     restaurants.forEach(function(restaurant) {
-        geocode(restaurant.address, mapboxKey).then(function(coords) {
+        geocode(restaurant.address, MAPBOX_KEY).then(function(coords) {
 
             var popup = new mapboxgl.Popup()
                 .setHTML('<h3>' + restaurant.name + '</h3>' + '<p>' + restaurant.message + '</p>');
