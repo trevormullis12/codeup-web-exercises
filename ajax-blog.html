@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Posts</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Montserrat", "Work Sans", sans-serif;
+            background-color: ivory;
+            margin: 0 24em;
+        }
+
+        .individual-post {
+            border: 2px solid coral;
+            margin: 2em 0;
+        }
+
+        h1 {
+            margin-bottom: 0;
+            margin-top: 0;
+            padding-left: 20px;
+            padding-top: 20px;
+            background-color: peachpuff;
+        }
+
+        h3 {
+            margin: 0;
+            padding-left: 20px;
+            padding-bottom: 20px;
+            background-color: peachpuff;
+        }
+
+        p {
+            padding-left: 20px;
+            padding-right: 20px;
+
+        }
+
+        .tags {
+            color: ivory;
+            background-color: coral;
+            padding: 3px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="posts"></div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    function listCatagory(arr) {
+        var newArr = [];
+        for(var i = 0; i < arr.length; i++) {
+            newArr.push('<span class="tags">' + arr[i])
+        }
+        return newArr;
+    }
+
+    $.ajax('data/blog.json').done(function(data) {
+        for(var i = 0; i < data.length; i++) {
+            var post = data[i];
+
+            // console.log(post.catagories);
+            // for(var c = 0; post.categories.length; c++){
+                // post.categories[v] = '<span style="color: ivory; background-color: coral;">' + post.categories[v];
+                // console.log('<span style="color: ivory; background-color: coral;">' + post.categories[c]);
+            //     console.log
+            //
+            // }
+
+            console.log(listCatagory(post.categories));
+
+            html = '<div class="individual-post"> <h1>' + post.title + '</h1>' + '<h3>' + post.date + '</h3>';
+            html += '<p>' + post.content + '</p>';
+            html += '<p style="color: coral">tags: ' + listCatagory(post.categories).join("</span>") + '</span></p></div>';
+
+            $('#posts').append(html);
+        }
+    })
+</script>
+</body>
+</html>
