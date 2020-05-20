@@ -7,12 +7,13 @@
     <script src="js/mapbox-geocode-utils.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.10.0/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://kit.fontawesome.com/48d2a09667.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="container">
-<div id="top-bar"><span id="page-title">Weather App</span> <span id="current-city">Current city: San Antonio</span></div>
+<div id="top-bar"><span id="page-title">Five Day Weather Forecast <i class="fas fa-sun"></i></span> <span id="current-city">Current Area: San Antonio, Texas 78205</span></div>
 <div id="search-bar">
-    place
+    <span id="place-text">place:</span>
     <input type="text">
     <button type="button">search</button>
 </div>
@@ -20,16 +21,6 @@
 <div id="weather-cards">
 </div>
 </div>
-<!--&lt;!&ndash;mapbox geocoder&ndash;&gt;-->
-<!--<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>-->
-<!--<link-->
-<!--        rel="stylesheet"-->
-<!--        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"-->
-<!--        type="text/css"-->
-<!--/>-->
-<!--&lt;!&ndash; Promise polyfill script required to use Mapbox GL Geocoder in IE 11 &ndash;&gt;-->
-<!--<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>-->
-<!--<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>-->
 <div id='map'></div>
 <!--jquery keys-->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
@@ -64,35 +55,31 @@
         return str;
     }
 
-     // function updateWeather () {
-     //    $('#weather-cards').html("deleted");
-        $.get(weatherUrl, weatherOptions).done(function (data) {
-            console.log(data);
+    $.get(weatherUrl, weatherOptions).done(function (data) {
+        console.log(data);
 
-            // var todayDate = new Date(data[0].dt + 1000);
-            // console.log(todayDate.toLocaleDateString());
+        // var todayDate = new Date(data[0].dt + 1000);
+        // console.log(todayDate.toLocaleDateString());
 
-            var totalHtml = "";
+        var totalHtml = "";
 
-            for (var i = 0; i < 5; i++) {
-                var html = "<ul class='weather-item-list' id='list-index-" + i + "'>";
-                html += "<li class='weather-data'>" + simpleDate(new Date(data.daily[i].dt * 1000)) + "</li>";
-                html += "<li class='weather-data'> low: " + data.daily[i].temp.min + "°F / <br>" + "high: " + data.daily[i].temp.max + "°F</li>";
-                html += "<li class='weather-data'>" + "<image src='http://openweathermap.org/img/w/" + data.daily[i].weather[0].icon + ".png'</li>";
-                html += "<li class='weather-data'>Description: <strong>" + data.daily[i].weather[0].description + "</strong></li>";
-                html += "<li class='weather-data'>Humidity: <strong>" + data.daily[i].humidity + "</strong></li>";
-                html += "<li class='weather-data'>Wind Speed: <strong>" + data.daily[i].wind_speed + "</strong></li>";
-                html += "<li class='weather-data'>Pressure: <strong>" + data.daily[i].pressure + "</strong></li>";
-                html += "</ul>";
+        for (var i = 0; i < 5; i++) {
+            var html = "<ul class='weather-item-list' id='list-index-" + i + "'>";
+            html += "<li class='weather-data'>" + simpleDate(new Date(data.daily[i].dt * 1000)) + "</li>";
+            html += "<li class='weather-data'> low: " + data.daily[i].temp.min + "°F / <br>" + "high: " + data.daily[i].temp.max + "°F</li>";
+            html += "<li class='weather-data'>" + "<image src='http://openweathermap.org/img/w/" + data.daily[i].weather[0].icon + ".png'</li>";
+            html += "<li class='weather-data'>Description: <strong>" + data.daily[i].weather[0].description + "</strong></li>";
+            html += "<li class='weather-data'>Humidity: <strong>" + data.daily[i].humidity + "</strong></li>";
+            html += "<li class='weather-data'>Wind Speed: <strong>" + data.daily[i].wind_speed + "</strong></li>";
+            html += "<li class='weather-data'>Pressure: <strong>" + data.daily[i].pressure + "</strong></li>";
+            html += "</ul>";
 
-                totalHtml += html;
-            }
-            $('#weather-cards').html(totalHtml);
-        })
-    // }
+            totalHtml += html;
+        }
+        $('#weather-cards').html(totalHtml);
+    })
 
     mapboxgl.accessToken = MAPBOX_KEY;
-
     var map = new mapboxgl.Map({
         container: 'map',
         zoom: 10,
@@ -106,37 +93,29 @@
         .addTo(map)
         .setDraggable(true);
 
-    console.log(marker.getLngLat());
-
     marker.on('dragend', function () {
-        renderNewCards({
-                lat: marker.getLngLat().lat,
-                lon: marker.getLngLat().lng,
-                appid: OPEN_WEATHER_APPID,
-                exclude: 'minutely, current, hourly',
-                units: 'imperial',
-                timezone: 'Chicago'
-        });
+        setCityDisplay(marker.getLngLat());
+        renderNewCards(marker.getLngLat().lat, marker.getLngLat().lng);
     })
 
-    var newWeatherOptions = {};
-    function setGeocode(input) {
-        geocode(input, MAPBOX_KEY).then(function (result) {
-            console.log(result);
-            map.setCenter(result);
-            newWeatherOptions = {
-                lat: result[1],
-                lon: result[0],
-                appid: OPEN_WEATHER_APPID,
-                exclude: 'minutely, current, hourly',
-                units: 'imperial',
-                timezone: 'Chicago'
-            };
-        });
+    function setCityDisplay(coords) {
+        reverseGeocode(coords, MAPBOX_KEY).then(function(data) {
+            var onlyCity = data.split(', ');
+            console.log(data);
+            $('#current-city').html("Current Area: " + onlyCity[onlyCity.length - 3] + ", " +onlyCity[onlyCity.length - 2]);
+        })
+
     }
 
-    function renderNewCards(newWeatherOptions) {
-        $.get(weatherUrl, newWeatherOptions).done(function (data) {
+    function renderNewCards(lat, lng) {
+        $.get(weatherUrl, {
+            lat: lat,
+            lon: lng,
+            appid: OPEN_WEATHER_APPID,
+            exclude: 'minutely, current, hourly',
+            units: 'imperial',
+            timezone: 'Chicago'
+        }).done(function (data) {
             var totalHtml = "";
             $('#weather-cards').html('');
             for (var i = 0; i < 5; i++) {
@@ -159,14 +138,8 @@
         e.preventDefault();
         geocode($('input').val(), MAPBOX_KEY).then(function (result) {
             marker.setLngLat(result);
-            renderNewCards({
-                lat: marker.getLngLat().lat,
-                lon: marker.getLngLat().lng,
-                appid: OPEN_WEATHER_APPID,
-                exclude: 'minutely, current, hourly',
-                units: 'imperial',
-                timezone: 'Chicago'
-            });
+            renderNewCards(marker.getLngLat().lat, marker.getLngLat().lng);
+            setCityDisplay(marker.getLngLat());
             map.flyTo({ center: result});
         });
         console.log(marker.getLngLat());
