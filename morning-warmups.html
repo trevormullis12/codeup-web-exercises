@@ -102,12 +102,57 @@
     //         return parseFloat(v) ** 4;
     // }
 
-    function howManyWords(str) {
-        if(typeof str !== 'string')
-            return 0;
-        str = str.split(' ');
-        return str.length;
-    }
+    // function howManyWords(str) {
+    //     if(typeof str !== 'string')
+    //         return 0;
+    //     str = str.split(' ');
+    //     return str.length;
+    // }
+
+
+    // Given the following array of objects, write a function in JavaScript that returns an array of objects where
+    // each hamster has a heightInMM greater than 85.
+
+    var hamsters = [
+        {
+            name: "Hamtaro",
+            heightInMM: 86,
+            fur: ['orange', 'white'],
+            gender: "male",
+            dateOfBirth: "August 6"
+        } , {
+            name: "Bijou",
+            heightInMM: 75,
+            fur: ['white'],
+            gender: "female",
+            dateOfBirth: "July 10"
+        } , {
+            name: "Oxnard",
+            heightInMM: 100,
+            fur: ['grey', 'white'],
+            gender: "male",
+            dateOfBirth: "May 3"
+        } , {
+            name: "Boss",
+            heightInMM: 120,
+            fur: ['black', 'cream'],
+            gender: "male",
+            dateOfBirth: "Spetember 21"
+        } , {
+            name: "Snoozer",
+            heightInMM: 85,
+            fur: ['brown', 'white'],
+            gender: "male",
+            dateOfBirth: "January 14"
+        }
+    ];
+
+    const tallHamsters = hamsters.filter((hamster => hamster.heightInMM > 85));
+    console.log(tallHamsters);
+
+
+
+
 
     // console.log('isAtLeastEightLong("cat")');
     // console.log(isAtLeastEightLong("justinreich"));
@@ -133,9 +178,9 @@
     // console.log(powerOfFour(2));
     // console.log(powerOfFour(5));
     // console.log(powerOfFour("7"));
-    console.log(howManyWords('this is a sentence'));
-    console.log(howManyWords('two words'));
-    console.log(howManyWords(31));
+    // console.log(howManyWords('this is a sentence'));
+    // console.log(howManyWords('two words'));
+    // console.log(howManyWords(31));
 
 
 </script>
